@@ -227,5 +227,35 @@
 
     <script src="auth.js"></script>
     <script src="script.js"></script>
+    <script type="module">
+  // Import only what you need (v10.7.1 is more stable than v12)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  // Your Firebase config (fixed storageBucket domain)
+  const firebaseConfig = {
+    apiKey: "AIzaSyCdBKJRf3txDt8LQLgKvL9UNUWV7iHw6Bk",
+    authDomain: "brightminds-learninghub.firebaseapp.com",
+    projectId: "brightminds-learninghub",
+    storageBucket: "brightminds-learninghub.appspot.com", // Fixed domain
+    messagingSenderId: "598495988704",
+    appId: "1:598495988704:web:5775a73d65e7380fafb985",
+    measurementId: "G-2Z74X8ZVVJ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  window.auth = getAuth(app); 
+  console.log("Firebase Auth ready:", window.auth); 
+  
+  // Make available globally (for other scripts)
+  window.firebaseAuth = auth;
+  
+  // Debug check (remove after testing)
+  console.log("Firebase ready!", { app, auth });
+</script>
+<script src="auth.js" type="module"></script>
 </body>
+
 </html>
